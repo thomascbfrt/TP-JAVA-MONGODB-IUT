@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="654.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tp2film.FilmsController">
+   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <children>
+         <Label text="Filtres">
+            <HBox.margin>
+               <Insets right="50.0" />
+            </HBox.margin>
+         </Label>
+         <Label text="Titre :" />
+         <TextField fx:id="filtreTitreField" />
+         <Label text="Année :" />
+         <TextField fx:id="filtreAnneeField" />
+         <Label text="Genre :" />
+         <TextField fx:id="filtreGenreField" />
+      </children>
+   </HBox>
+    <TableView fx:id="filmsTable" onMouseClicked="#remplirChamps">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" />
+            <TableColumn fx:id="colTitre" text="Titre" />
+            <TableColumn fx:id="colAnnee" text="Année" />
+            <TableColumn fx:id="colGenre" text="Genre" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <TextField fx:id="titreField" prefHeight="25.0" prefWidth="456.0" promptText="Titre" />
+      <TextField fx:id="realisateurNomField" prefHeight="25.0" prefWidth="145.0" promptText="Réalisateur (NOM)" />
+      <TextField fx:id="realisateurPrenomField" promptText="Réalisateur (Prénom)" />
+
+    </HBox>
+   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <children>
+           <TextField fx:id="genreField" promptText="Genre" />
+           <TextField fx:id="anneeField" promptText="Année" />
+         <TextField fx:id="entreesField" promptText="Entrées" />
+         <TextField fx:id="dureeField" promptText="Durée (min)" />
+         <TextField fx:id="nationaliteField" promptText="Nationalité" />
+      </children>
+   </HBox>
+   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <children>
+         <TextField fx:id="acteur1PrenomField" promptText="Acteur 1 (NOM)" />
+         <TextField fx:id="acteur1NomField" promptText="Acteur 1 (Prénom)" />
+         <ChoiceBox fx:id="acteur1RoleField" prefWidth="150.0" />
+      </children>
+   </HBox>
+   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <children>
+         <TextField fx:id="acteur2PrenomField" promptText="Acteur 2 (NOM)" />
+         <TextField fx:id="acteur2NomField" promptText="Acteur 2 (Prénom)" />
+         <ChoiceBox fx:id="acteur2RoleField" prefWidth="150.0" />
+      </children>
+   </HBox>
+   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <children>
+         <TextField fx:id="acteur3PrenomField" promptText="Acteur 3 (NOM)" />
+         <TextField fx:id="acteur3NomField" promptText="Acteur 3 (Prénom)" />
+         <ChoiceBox fx:id="acteur3RoleField" prefWidth="150.0" />
+      </children>
+   </HBox>
+   <TextArea fx:id="resumeField" prefHeight="148.0" prefWidth="762.0" promptText="Résumé" wrapText="true" />
+   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+      <children>
+           <Button onAction="#ajouterFilm" text="Ajouter Film" />
+           <Button onAction="#supprimerFilm" text="Supprimer Film" />
+           <Button onAction="#modifierFilm" text="Modifier Film" />
+      
+          <Button onAction="#chargerFilms" text="Actualiser" />
+      </children>
+      <padding>
+         <Insets top="10.0" />
+      </padding>
+   </HBox>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

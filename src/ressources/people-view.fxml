@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.tp2film.PeopleController"
+      prefWidth="600" prefHeight="400">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <TableView fx:id="peopleTable" prefHeight="400" prefWidth="400" onMouseClicked="#remplirFilms">
+        <columns>
+            <TableColumn text="NOM" fx:id="colNom" prefWidth="200"/>
+            <TableColumn text="Prénom" fx:id="colPrénom" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+     <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <TableView fx:id="filmsTable">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" />
+            <TableColumn fx:id="colTitre" text="Titre" />
+            <TableColumn fx:id="colAnnee" text="Année" />
+            <TableColumn fx:id="colGenre" text="Genre" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Actualiser" onAction="#chargerPeople"/>
+    </HBox>
+</VBox>
