@@ -102,7 +102,7 @@ public class FilmsController {
 					try {
 						yearValue = Integer.parseInt(yearFilter);
 					} catch (NumberFormatException e) {
-						showAlert("Erreur", "Annee invalide.");
+						showAlert("oups", "annee invalide");
 						return;
 					}
 					query.append(useFrench ? "annee" : "year", yearValue);
@@ -119,7 +119,7 @@ public class FilmsController {
 				}
 			}
 		} catch (Exception e) {
-			showAlert("Erreur de chargement", "Unable to load due to an error: " + e);
+			showAlert("oups", "chargement rate");
 		}
 	}
 
@@ -192,10 +192,10 @@ public class FilmsController {
 			}
 
 			collection.insertOne(filmDoc);
-			showInfo("OK", "Film ajoute.");
+			showInfo("ok", "film ajoute");
 			chargerFilms();
 		} catch (MongoException e) {
-			showAlert("Erreur", "Impossible d'ajouter le film: " + e.getMessage());
+			showAlert("oups", "ajout rate");
 		}
 	}
 
@@ -203,7 +203,7 @@ public class FilmsController {
 	public void supprimerFilm() {
 		Film film = filmsTable.getSelectionModel().getSelectedItem();
 		if (film == null) {
-			showInfo("Info", "Selectionnez un film.");
+			showInfo("info", "choisis un film");
 			return;
 		}
 
@@ -214,15 +214,15 @@ public class FilmsController {
 			ObjectId id = new ObjectId(film.getId());
 			DeleteResult result = collection.deleteOne(new Document("_id", id));
 			if (result.getDeletedCount() == 0) {
-				showAlert("Erreur", "Suppression impossible.");
+				showAlert("oups", "suppression rate");
 			} else {
-				showInfo("OK", "Film supprime.");
+				showInfo("ok", "film supprime");
 				chargerFilms();
 			}
 		} catch (IllegalArgumentException e) {
-			showAlert("Erreur", "Identifiant invalide.");
+			showAlert("oups", "id invalide");
 		} catch (MongoException e) {
-			showAlert("Erreur", "Impossible de supprimer le film: " + e.getMessage());
+			showAlert("oups", "suppression rate");
 		}
 	}
 
@@ -230,7 +230,7 @@ public class FilmsController {
 	public void modifierFilm() {
 		Film film = filmsTable.getSelectionModel().getSelectedItem();
 		if (film == null) {
-			showInfo("Info", "Selectionnez un film.");
+			showInfo("info", "choisis un film");
 			return;
 		}
 
@@ -249,15 +249,15 @@ public class FilmsController {
 			Document update = new Document("$set", updateDoc);
 			UpdateResult result = collection.updateOne(filter, update);
 			if (result.getMatchedCount() == 0) {
-				showAlert("Erreur", "Film non trouve.");
+				showAlert("oups", "film introuvable");
 			} else {
-				showInfo("OK", "Film modifie.");
+				showInfo("ok", "film modifie");
 				chargerFilms();
 			}
 		} catch (IllegalArgumentException e) {
-			showAlert("Erreur", "Identifiant invalide.");
+			showAlert("oups", "id invalide");
 		} catch (MongoException e) {
-			showAlert("Erreur", "Impossible de modifier le film: " + e.getMessage());
+			showAlert("oups", "modif rate");
 		}
 	}
 
@@ -309,26 +309,26 @@ public class FilmsController {
 	private Document buildFilmDocument(boolean useFrench, boolean includeCreatedAt) {
 		String title = titreField.getText().trim();
 		if (title.isEmpty()) {
-			showAlert("Erreur", "Titre obligatoire.");
+			showAlert("oups", "titre obligatoire");
 			return null;
 		}
 
 		String yearText = anneeField.getText().trim();
 		if (yearText.isEmpty()) {
-			showAlert("Erreur", "Annee obligatoire.");
+			showAlert("oups", "annee obligatoire");
 			return null;
 		}
 		int yearValue;
 		try {
 			yearValue = Integer.parseInt(yearText);
 		} catch (NumberFormatException e) {
-			showAlert("Erreur", "Annee invalide.");
+			showAlert("oups", "annee invalide");
 			return null;
 		}
 
 		String genre = genreField.getText().trim();
 		if (genre.isEmpty()) {
-			showAlert("Erreur", "Genre obligatoire.");
+			showAlert("oups", "genre obligatoire");
 			return null;
 		}
 
@@ -348,7 +348,7 @@ public class FilmsController {
 		String directorFirstname = realisateurPrenomField.getText().trim();
 		String directorLastname = realisateurNomField.getText().trim();
 		if (directorFirstname.isEmpty() && directorLastname.isEmpty()) {
-			showAlert("Erreur", "Realisateur obligatoire.");
+			showAlert("oups", "realisateur obligatoire");
 			return null;
 		}
 
@@ -425,7 +425,7 @@ public class FilmsController {
 		try {
 			return Integer.valueOf(Integer.parseInt(trimmed));
 		} catch (NumberFormatException e) {
-			showAlert("Erreur", label + " invalide.");
+			showAlert("oups", label.toLowerCase() + " invalide");
 			return null;
 		}
 	}
