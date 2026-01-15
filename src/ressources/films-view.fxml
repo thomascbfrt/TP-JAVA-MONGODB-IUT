@@ -23,8 +23,8 @@
          <TextField fx:id="filtreTitreField" />
          <Label text="Année :" />
          <TextField fx:id="filtreAnneeField" />
-         <Label text="Genre :" />
-         <TextField fx:id="filtreGenreField" />
+         <Label text="Categorie :" />
+         <TextField fx:id="filtreCategorieField" />
       </children>
    </HBox>
     <TableView fx:id="filmsTable" onMouseClicked="#remplirChamps">

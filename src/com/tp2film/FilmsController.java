@@ -35,7 +35,7 @@ public class FilmsController {
 	@FXML
 	private TableColumn<Film, String> colGenre;
 	@FXML
-	private TextField filtreTitreField, filtreAnneeField, filtreGenreField;
+	private TextField filtreTitreField, filtreAnneeField, filtreCategorieField;
 	@FXML
 	private TextField titreField, anneeField, genreField;
 	@FXML
@@ -90,7 +90,7 @@ public class FilmsController {
 				Document query = new Document();
 				String titleFilter = filtreTitreField.getText().trim();
 				String yearFilter = filtreAnneeField.getText().trim();
-				String genreFilter = filtreGenreField.getText().trim();
+				String categorieFilter = filtreCategorieField.getText().trim();
 
 				if (!titleFilter.isEmpty()) {
 					query.append(useFrench ? "titre" : "title",
@@ -108,9 +108,9 @@ public class FilmsController {
 					query.append(useFrench ? "annee" : "year", yearValue);
 				}
 
-				if (!genreFilter.isEmpty()) {
+				if (!categorieFilter.isEmpty()) {
 					query.append(useFrench ? "categorie" : "genre",
-							new Document("$regex", genreFilter).append("$options", "i"));
+							new Document("$regex", categorieFilter).append("$options", "i"));
 				}
 
 				FindIterable<Document> results = collection.find(query);
