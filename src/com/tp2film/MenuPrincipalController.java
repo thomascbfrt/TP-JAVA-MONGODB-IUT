@@ -20,16 +20,24 @@ public class MenuPrincipalController {
 
     private void ouvrirFenetre(String fxml, String titre) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/" + fxml));
+            // Chargement du fichier FXML depuis le dossier ressources
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressources/" + fxml));
             Parent root = loader.load();
+
+            // Création d'une nouvelle fenêtre (Stage)
             Stage stage = new Stage();
             stage.setTitle("Gestion des " + titre);
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/clapperboard.png")));
+
+            // Ajout de l'icône de l'application
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/ressources/clapperboard.png")));
+
+            // Configuration de la scène et affichage
             stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL); // 👈 rend la fenêtre modale
+            stage.initModality(Modality.APPLICATION_MODAL); // Rend la fenêtre modale (bloque l'accès aux autres fenêtres)
             stage.show();
 
         } catch (Exception e) {
+            // Affichage des erreurs dans la console (pour le débogage)
             e.printStackTrace();
         }
     }

@@ -14,10 +14,20 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/menuprincipal.fxml"));
+        // Initialize the database with sample data if needed.
+        MongoDbInitializer.init();
+
+        // Chargement du fichier FXML pour l'interface du menu principal
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ressources/menuprincipal.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        // Configuration de la fenêtre principale
         stage.setTitle("TP2 - Filmographie");
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/clapperboard.png")));
+
+        // Ajout de l'icône de l'application
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/ressources/clapperboard.png")));
+
+        // Affichage de la fenêtre
         stage.setScene(scene);
         stage.show();
     }

@@ -67,9 +67,10 @@
     <build>
         <sourceDirectory>src</sourceDirectory>
         <resources>
+            <!-- Configuration pour copier les ressources dans le bon dossier -->
             <resource>
                 <directory>src/ressources</directory>
-                <targetPath>resources</targetPath>
+                <targetPath>ressources</targetPath>
             </resource>
         </resources>
 
